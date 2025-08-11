@@ -1,0 +1,75 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container mt-50">
+  <div class="text-center">
+    <h1 class="display-4 fw-bold text-danger">Welcome to StayEase 🏡</h1>
+    <p class="lead mt-3">Your go-to platform for booking comfortable homes and unique stays around you.</p>
+    <a href="/listings" class="btn btn-outline-danger mt-4 px-4 py-2">Explore Listings</a>
+  </div>
+
+  <hr class="my-5">
+
+  <div class="row text-center mt-5">
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 border-0 shadow-lg hover-shadow transition-all">
+      <div class="card-body">
+        <div class="display-4 mb-3">🔍</div>
+        <h5 class="card-title fw-bold">Discover</h5>
+        <p class="card-text text-muted">
+          Browse through a variety of listings tailored to your comfort and budget.
+        </p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 border-0 shadow-lg hover-shadow transition-all">
+      <div class="card-body">
+        <div class="display-4 mb-3">🛏️</div>
+        <h5 class="card-title fw-bold">Book</h5>
+        <p class="card-text text-muted">
+          Easily book a place that fits your needs in just a few clicks.
+        </p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 border-0 shadow-lg hover-shadow transition-all">
+      <div class="card-body">
+        <div class="display-4 mb-3">⭐</div>
+        <h5 class="card-title fw-bold">Enjoy</h5>
+        <p class="card-text text-muted">
+          Stay, relax, and enjoy your trip with trusted hosts and cozy homes.
+        </p>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hover-shadow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  .transition-all {
+    transition: all 0.3s ease-in-out;
+  }
+</style>
+
+<div class="text-center mt-5 p-4 bg-light rounded shadow-sm">
+  <h4 class="fw-bold mb-3">
+    🏠 Want to list your own property?
+  </h4>
+  <p class="text-muted mb-4">
+    Share your space and connect with potential customers today!
+  </p>
+  <a href="/listings/new" class="btn btn-danger btn-lg px-4">
+    <i class="bi bi-plus-circle me-2"></i>Create a Listing
+  </a>
+</div>
+  <br>
+</div>
