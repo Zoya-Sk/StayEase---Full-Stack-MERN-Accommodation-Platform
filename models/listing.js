@@ -10,15 +10,8 @@ const listingSchema = new Schema({
     },
     description: String,
     image: {
-        filename: {
-            type: String,
-            default: "listingimage"
-        },
-        url: {
-            type: String,
-            default: "https://media.istockphoto.com/id/909423306/photo/modern-multilevel-house-exterior-with-pool.webp?s=612x612&w=is&k=20&c=l8z-O0GwqW7YEPmXl1YQ5IE1cepggwD7HpQyAtGwNik=",
-            set: (v) => v === "" ? "https://media.istockphoto.com/id/909423306/photo/modern-multilevel-house-exterior-with-pool.webp?s=612x612&w=is&k=20&c=l8z-O0GwqW7YEPmXl1YQ5IE1cepggwD7HpQyAtGwNik=" : v
-        }
+        url: String,
+        filename: String
     },
     price: Number,
     location: String,
