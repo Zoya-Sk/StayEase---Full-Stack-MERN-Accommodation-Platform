@@ -26,29 +26,29 @@
       <!-- Links -->
       <div class="navbar-nav ms-auto align-items-center gap-2">
 
-        <a class="nav-link fw-semibold px-2 d-flex align-items-center gap-1" href="/">
+        <a class="nav-link px-2 d-flex align-items-center gap-1" href="/">
           <i class="fa-solid fa-compass text-danger"></i> Discover
         </a>
 
-        <a class="nav-link fw-semibold px-2 d-flex align-items-center gap-1" href="/listings">
+        <a class="nav-link px-2 d-flex align-items-center gap-1" href="/listings">
           <i class="fa-solid fa-globe text-danger"></i> Explore
         </a>
 
-        <a class="nav-link fw-semibold px-2 d-flex align-items-center gap-1" href="/listings/new">
+        <a class="nav-link px-2 d-flex align-items-center gap-1" href="/listings/new">
           <i class="fa-solid fa-plus text-danger"></i> List Your Stay
         </a>
 
         <% if(typeof currUser === 'undefined' || !currUser){ %>
-          <a class="btn btn-outline-danger rounded-pill px-3 py-1 fw-semibold d-flex align-items-center gap-1" href="/signup">
-            <i class="fa-solid fa-user-plus"></i> Sign Up
+          <a class="btn btn-outline-danger rounded-pill px-3 py-1 d-flex align-items-center gap-1" href="/signup">
+             Sign Up
           </a>
-          <a class="btn btn-danger text-white rounded-pill px-3 py-1 fw-semibold d-flex align-items-center gap-1" href="/login">
-            <i class="fa-solid fa-right-to-bracket"></i> Login
+          <a class="btn btn-danger text-white rounded-pill px-3 py-1 d-flex align-items-center gap-1" href="/login">
+            Login
           </a>
         <% } %>
 
         <% if(typeof currUser !== 'undefined' && currUser){ %>
-          <a class="btn btn-outline-secondary rounded-pill px-3 py-1 fw-semibold d-flex align-items-center gap-1" href="/logout">
+          <a class="btn btn-outline-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-1" href="/logout">
             <i class="fa-solid fa-right-from-bracket"></i> Logout
           </a>
         <% } %>
