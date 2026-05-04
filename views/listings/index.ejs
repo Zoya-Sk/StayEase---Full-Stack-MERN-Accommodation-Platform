@@ -3,13 +3,29 @@
 <style>
   #filters{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
   }
+  #filters::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
   .filter{
     text-align: center;
     margin-right: 2rem;
+    flex-shrink: 0;
     opacity: 0.7;
+    text-decoration: none;
+  color: inherit;
   }
+  .active-filter {
+  opacity: 1 !important;
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+}
   .filter:hover{
     opacity: 1;
     cursor: pointer;
@@ -21,59 +37,60 @@
     display: none;
   }
   .tax-toggle{
+    flex-shrink: 0;
     border: 1px solid black;
     border-radius: 1rem;
     height: 3rem;
     padding: 1rem;
     display: flex;
     align-items: center;
-    margin-left: 2.5rem;
+    /* margin-left: 2.5rem; */
   }
 </style>
 
 <div id="filters">
-  <div class="filter">
-      <div><i class="fa-solid fa-fire"></i></div>
-      <p>Trending</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-solid fa-bed"></i></div>
-      <p>Rooms</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-solid fa-city"></i></div>
-      <p>Iconic Cities</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-solid fa-mountain"></i></div>
-      <p>Mountains</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-brands fa-fort-awesome"></i></div>
-      <p>Catles</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-solid fa-person-swimming"></i></div>
-      <p>Amazing Pools</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-solid fa-campground"></i></div>
-      <p>camping</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-solid fa-cow"></i></div>
-      <p>Farms</p>
-  </div>
-  <div class="filter">
-      <div><i class="fa-regular fa-snowflake"></i></div>
-      <p>Arctic</p>
-  </div>
+  <a href="/listings?category=trending" class="filter <%= category === 'trending' ? 'active-filter' : '' %>">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </a>
+  <a href="/listings?category=rooms" class="filter <%= category === 'rooms' ? 'active-filter' : '' %>">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p>Rooms</p>
+  </a>
+ <a href="/listings?category=iconic%20cities" class="filter <%= category === 'iconic cities' ? 'active-filter' : '' %>">
+    <div><i class="fa-solid fa-city"></i></div>
+    <p>Iconic Cities</p>
+  </a>
+  <a href="/listings?category=mountains" class="filter <%= category === 'mountains' ? 'active-filter' : '' %>">
+    <div><i class="fa-solid fa-mountain"></i></div>
+    <p>Mountains</p>
+  </a>
+  <a href="/listings?category=castles" class="filter <%= category === 'castles' ? 'active-filter' : '' %>">
+    <div><i class="fa-brands fa-fort-awesome"></i></div>
+    <p>Castles</p>
+  </a>
+  <a href="/listings?category=amazing%20pools" class="filter <%= category === 'amazing pools' ? 'active-filter' : '' %>">
+    <div><i class="fa-solid fa-person-swimming"></i></div>
+    <p>Amazing Pools</p>
+  </a>
+  <a href="/listings?category=camping" class="filter <%= category === 'camping' ? 'active-filter' : '' %>">
+    <div><i class="fa-solid fa-campground"></i></div>
+    <p>Camping</p>
+  </a>
+  <a href="/listings?category=farms" class="filter <%= category === 'farms' ? 'active-filter' : '' %>">
+    <div><i class="fa-solid fa-cow"></i></div>
+    <p>Farms</p>
+  </a>
+  <a href="/listings?category=arctic" class="filter <%= category === 'arctic' ? 'active-filter' : '' %>">
+    <div><i class="fa-regular fa-snowflake"></i></div>
+    <p>Arctic</p>
+  </a>
 
   <div class="tax-toggle">
     <div class="form-check-reverse form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-  <label class="form-check-label" for="switchCheckDefault">Display Total After Taxes</label>
-</div>
+      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+      <label class="form-check-label" for="switchCheckDefault">Display Total After Taxes</label>
+    </div>
   </div>
 </div>
 
@@ -94,6 +111,19 @@
 </a>
   <% } %>
 </div>
+
+<% if(allListings.length === 0){ %>
+  <div class="text-center py-5">
+    <i class="fa-solid fa-house-circle-xmark fa-4x text-muted mb-3"></i>
+    <h4 class="text-muted">No stays found!</h4>
+    <% if(search){ %>
+      <p class="text-muted">No results for "<b><%= search %></b>"</p>
+    <% } else if(category && category !== 'all'){ %>
+      <p class="text-muted">No listings in <b><%= category %></b> category yet.</p>
+    <% } %>
+    <a href="/listings" class="btn btn-danger rounded-pill mt-2">View All Listings</a>
+  </div>
+<% } %>
   
 <script>
   let taxSwitch = document.getElementById("switchCheckDefault");

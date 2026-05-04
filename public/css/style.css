@@ -67,6 +67,11 @@ h6 {
     font-size: 2rem;
 }
 
+.filter-btn.active {
+    border-bottom: 2px solid black;
+    opacity: 1;
+}
+
 /* footer styling */
 .f-info-links a {
     text-decoration: none;

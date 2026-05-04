@@ -4,7 +4,6 @@ if (process.env.NODE_ENV != "production") {
 
 const express = require("express");
 const app = express();
-const ejs = require("ejs");
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
@@ -20,17 +19,11 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const listingController = require("./controllers/listings.js");
+const wrapAsync = require("./utils/wrapAsync.js");
 
 const dbUrl = process.env.ATLASDB_URL;
 const PORT = process.env.PORT || 8080;
-
-/* -------------------- APP CONFIG -------------------- */
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
-app.engine("ejs", ejsMate);
-app.use(express.static(path.join(__dirname, "/public")));
 
 /* -------------------- APP CONFIG -------------------- */
 app.set("view engine", "ejs");
@@ -83,16 +76,20 @@ app.use((req, res, next) => {
 });
 
 /* -------------------- ROUTES -------------------- */
-app.get("/", (req, res) => {
-    res.render("home");
-});
+app.get("/", wrapAsync(listingController.home));
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
 /* -------------------- ERROR HANDLING -------------------- */
+// Chrome DevTools automatic request - ignore karo
+app.get("/.well-known/appspecific/com.chrome.devtools.json", (req, res) => {
+    res.status(204).send();
+});
+
 app.all("*", (req, res, next) => {
+    console.log("404 hit:", req.method, req.url);
     next(new ExpressError(404, "Page Not Found!"));
 });
 
@@ -115,11 +112,3 @@ mongoose.connect(dbUrl)
         console.log("Mongo DB connection error:", err);
         process.exit(1);
     });
-
-
-/* -------------------- SERVER START -------------------- */
-function startServer() {
-    app.listen(PORT, () => {
-        console.log(`Server is listening on port ${PORT}`);
-    });
-}

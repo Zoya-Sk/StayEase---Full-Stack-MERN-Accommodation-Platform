@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-white shadow-sm border-bottom sticky-top py-3">
-  <div class="container-fluid">
+  <div class="container-fluid px-3">
 
     <!-- Brand -->
     <a class="navbar-brand fw-bold text-danger d-flex align-items-center gap-2" href="/">
@@ -7,24 +7,41 @@
       StayEase
     </a>
 
-    <!-- Mobile toggle -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!-- Mobile Search + Toggle -->
+    <div class="d-flex align-items-center gap-2 d-md-none ms-auto">
+      <!-- Mobile Search Button (opens collapse) -->
+      <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" data-bs-toggle="collapse" data-bs-target="#mobileSearch">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <!-- Hamburger -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Search Bar (collapsible) -->
+    <div class="collapse w-100 d-md-none" id="mobileSearch">
+      <form class="d-flex align-items-center rounded-pill border px-3 py-1 gap-2 shadow-sm my-2" action="/listings" method="GET">
+        <input type="text" name="search" class="form-control border-0 shadow-none" placeholder="Search stays..." style="font-size: 0.9rem;">
+        <button type="submit" class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;">
+          <i class="fa-solid fa-magnifying-glass text-white" style="font-size:0.75rem;"></i>
+        </button>
+      </form>
+    </div>
 
     <!-- Navbar content -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      
-      <!-- Center Search (only on md+) -->
-      <form class="mx-auto d-none d-md-flex align-items-center rounded-pill border px-3 py-1 gap-2 shadow-sm" style="max-width: 450px; background: #fff;">
-        <input type="text" class="form-control border-0 shadow-none" placeholder="Search stays..." style="font-size: 0.9rem;">
-        <button type="submit" class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+    <div class="collapse navbar-collapse bg-white" id="navbarNav" style="z-index: 1050;">
+
+      <!-- Desktop Search -->
+      <form class="mx-auto d-none d-md-flex align-items-center rounded-pill border px-3 py-1 gap-2 shadow-sm" action="/listings" method="GET" style="max-width: 420px; background: #fff;">
+        <input type="text" name="search" class="form-control border-0 shadow-none" placeholder="Search stays..." style="font-size: 0.9rem;">
+        <button type="submit" class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;">
           <i class="fa-solid fa-magnifying-glass text-white"></i>
         </button>
       </form>
 
-      <!-- Links -->
-      <div class="navbar-nav ms-auto align-items-center gap-2">
+      <!-- Nav Links -->
+      <div class="navbar-nav ms-auto align-items-start align-items-md-center gap-1 gap-md-2 mt-2 mt-md-0">
 
         <a class="nav-link px-2 d-flex align-items-center gap-1" href="/">
           <i class="fa-solid fa-compass text-danger"></i> Discover
@@ -39,16 +56,14 @@
         </a>
 
         <% if(typeof currUser === 'undefined' || !currUser){ %>
-          <a class="btn btn-outline-danger rounded-pill px-3 py-1 d-flex align-items-center gap-1" href="/signup">
-             Sign Up
-          </a>
-          <a class="btn btn-danger text-white rounded-pill px-3 py-1 d-flex align-items-center gap-1" href="/login">
-            Login
-          </a>
+          <div class="d-flex flex-column flex-md-row gap-2 mt-1 mt-md-0">
+            <a class="btn btn-outline-danger rounded-pill px-3 py-1" href="/signup">Sign Up</a>
+            <a class="btn btn-danger text-white rounded-pill px-3 py-1" href="/login">Login</a>
+          </div>
         <% } %>
 
         <% if(typeof currUser !== 'undefined' && currUser){ %>
-          <a class="btn btn-outline-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-1" href="/logout">
+          <a class="btn btn-outline-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-1 mt-1 mt-md-0" href="/logout">
             <i class="fa-solid fa-right-from-bracket"></i> Logout
           </a>
         <% } %>

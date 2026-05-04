@@ -1,79 +1,134 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="container mt-5">
-  <!-- Hero Section -->
-  <div class="text-center mb-5">
-    <h1 class="display-4 fw-bold text-danger">Welcome to StayEase <span class="fs-1">🏡</span></h1>
-    <p class="lead mt-3 text-muted w-75 mx-auto">
-      Your trusted platform to find comfortable homes, unique stays, and unforgettable experiences — all in one place.
-    </p>
-    <a href="/listings" class="btn btn-danger btn-lg mt-4 px-5 py-2 shadow-sm">
-      <i class="bi bi-search me-2"></i> Explore Listings
-    </a>
-  </div>
-
-  <!-- Divider -->
-  <hr class="my-5">
-
-  <!-- Features Section -->
-  <div class="row text-center mt-4">
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0 shadow-sm hover-shadow transition-all rounded-4">
-        <div class="card-body py-5">
-          <div class="display-4 mb-3">🔍</div>
-          <h5 class="card-title fw-bold mb-3">Discover</h5>
-          <p class="card-text text-muted px-3">
-            Explore a wide variety of listings, tailored to your comfort, location, and budget.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0 shadow-sm hover-shadow transition-all rounded-4">
-        <div class="card-body py-5">
-          <div class="display-4 mb-3">🛏️</div>
-          <h5 class="card-title fw-bold mb-3">Book</h5>
-          <p class="card-text text-muted px-3">
-            Reserve your perfect stay in just a few clicks with our simple booking process.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 border-0 shadow-sm hover-shadow transition-all rounded-4">
-        <div class="card-body py-5">
-          <div class="display-4 mb-3">⭐</div>
-          <h5 class="card-title fw-bold mb-3">Enjoy</h5>
-          <p class="card-text text-muted px-3">
-            Relax and make memories with trusted hosts and cozy homes.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- List Your Property CTA -->
-  <div class="text-center mt-5 p-5 bg-light rounded-4 shadow-sm">
-    <h4 class="fw-bold mb-3">🏠 List Your Property with StayEase</h4>
-    <p class="text-muted mb-4 w-75 mx-auto">
-      Turn your space into income by connecting with travelers looking for their next great stay.
-    </p>
-    <a href="/listings/new" class="btn btn-danger btn-lg px-4 shadow-sm">
-      <i class="bi bi-plus-circle me-2"></i>Create a Listing
-    </a>
-  </div>
-  <br>
-</div>
-
-<!-- Styles -->
 <style>
-  .hover-shadow:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  .hero-section {
+    background: linear-gradient(135deg, #ff6b6b 0%, #D0415A 50%, #b5002b 100%);
+    border-radius: 24px;
+    padding: 80px 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
   }
-  .transition-all {
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+  }
+  .hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .hover-card {
     transition: all 0.3s ease-in-out;
   }
+  .hover-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.13) !important;
+  }
+  .featured-img {
+    height: 200px;
+    object-fit: cover;
+  }
+  .listing-link {
+    text-decoration: none;
+    color: inherit;
+  }
 </style>
+
+<div class="container mt-4 mb-5">
+
+  <!-- Hero Section -->
+  <div class="hero-section text-center mb-5 shadow">
+    <h1 class="display-4 fw-bold mb-3">Welcome to StayEase 🏡</h1>
+    <p class="lead mb-4 mx-auto" style="max-width: 600px; opacity: 0.9;">
+      Your trusted platform to find comfortable homes, unique stays, and unforgettable experiences — all in one place.
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      <a href="/listings" class="btn btn-light btn-lg px-5 fw-bold text-danger shadow-sm">
+        🔍 Explore Listings
+      </a>
+      <a href="/listings/new" class="btn btn-outline-light btn-lg px-4">
+        + List Your Stay
+      </a>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="row text-center mb-5">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 border-0 shadow-sm hover-card rounded-4">
+        <div class="card-body py-5">
+          <div class="display-4 mb-3">🔍</div>
+          <h5 class="fw-bold mb-2">Discover</h5>
+          <p class="text-muted px-2">Explore listings tailored to your comfort, location, and budget.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 border-0 shadow-sm hover-card rounded-4">
+        <div class="card-body py-5">
+          <div class="display-4 mb-3">🛏️</div>
+          <h5 class="fw-bold mb-2">Book</h5>
+          <p class="text-muted px-2">Reserve your perfect stay in just a few clicks.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 border-0 shadow-sm hover-card rounded-4">
+        <div class="card-body py-5">
+          <div class="display-4 mb-3">⭐</div>
+          <h5 class="fw-bold mb-2">Enjoy</h5>
+          <p class="text-muted px-2">Relax and make memories with trusted hosts and cozy homes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Listings -->
+  <div class="mb-5">
+    <h3 class="fw-bold mb-1">✨ Featured Stays</h3>
+    <p class="text-muted mb-4">Hand-picked stays just for you</p>
+    <div class="row g-4">
+      <% for(let listing of featured) { %>
+        <div class="col-12 col-md-4">
+          <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card border-0 shadow-sm hover-card rounded-4 h-100">
+              <img src="<%= listing.image.url %>" class="card-img-top rounded-top-4 featured-img" alt="<%= listing.title %>">
+              <div class="card-body">
+                <h6 class="fw-bold mb-1"><%= listing.title %></h6>
+                <p class="text-muted small mb-1"><i class="fa-solid fa-location-dot text-danger"></i> <%= listing.location %>, <%= listing.country %></p>
+                <p class="fw-bold text-danger mb-0">&#8377;<%= listing.price.toLocaleString("en-IN") %> / Night</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+    <div class="text-center mt-4">
+      <a href="/listings" class="btn btn-outline-danger rounded-pill px-4">View All Listings →</a>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="text-center p-5 rounded-4 shadow-sm" style="background: linear-gradient(135deg, #fff5f5, #ffe0e6);">
+    <h4 class="fw-bold mb-2">🏠 List Your Property with StayEase</h4>
+    <p class="text-muted mb-4 mx-auto" style="max-width: 500px;">
+      Turn your space into income by connecting with travelers looking for their next great stay.
+    </p>
+    <a href="/listings/new" class="btn btn-danger btn-lg px-5 shadow-sm">
+      + Create a Listing
+    </a>
+  </div>
+
+</div>
