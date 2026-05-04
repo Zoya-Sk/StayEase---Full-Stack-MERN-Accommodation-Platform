@@ -38,6 +38,7 @@ A full-stack accommodation listing platform inspired by Airbnb — built with No
 ---
 
 ## 📁 Project Structure (MVC)
+
 StayEase/
 ├── controllers/        # Business logic
 │   ├── listings.js
@@ -125,7 +126,7 @@ nodemon app.js
 
 ## 👩‍💻 Author
 
-**Zoya** — [GitHub](https://github.com/(https://github.com/Zoya-Sk)) • [LinkedIn](https://linkedin.com/in/zoyance/)
+**Zoya** — [GitHub](https://github.com//Zoya-Sk) • [LinkedIn](https://linkedin.com/in/zoyance/)
 
 ---
 
