@@ -111,7 +111,7 @@ nodemon app.js
 
 | Home Page | Listings | Listing Detail |
 |-----------|----------|----------------|
-| ![Home](screenshots/home.png) | ![Listings](screenshots/listings.png) | ![Detail](screenshots/detail.png) |
+| ![Home](screenshots/Home.png) | ![Listings](screenshots/Listings.png) | ![Detail](screenshots/Detail.png) |
 
 ---
 
